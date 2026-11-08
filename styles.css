@@ -135,6 +135,16 @@ h1 {
   text-wrap: balance;
 }
 
+.intro .subtitle {
+  margin: clamp(10px, 1.6vh, 18px) auto 0;
+  max-width: 46ch;
+  font-size: clamp(15px, 1.3vw, 19px);
+  line-height: 1.4;
+  letter-spacing: -0.008em;
+  color: var(--ink-2);
+  text-wrap: balance;
+}
+
 .matrix {
   position: relative;
   height: clamp(320px, 60vh, 780px);

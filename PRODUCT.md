@@ -13,7 +13,7 @@ Not yet confirmed (asked 2026-11-08, unanswered). Working assumption from the br
 DPX Labs (Digital Physics Labs, dpxlabs.ai) is an independent AI research initiative exploring the intersection of physical sciences, machine learning and computing. The website states that intent and invites contact. Success: a visitor understands within seconds that DPX Labs is building physics-grounded AI, and knows how to reach the team.
 
 ## Positioning
-Intelligence for the Physical World. The site's own mechanism is the proof: a live ASCII character matrix in which nine physics systems (fluids, reactions, heat transfer, propulsion, engine, power, wind, multiphase, nuclear) are simulated cell by cell. The narrative progression is Physics → Intelligence → Computing.
+Learning the Laws of Physics. The site's own mechanism is the proof: a live ASCII character matrix in which nine physics systems (fluids, reactions, heat transfer, propulsion, engine, power, wind, multiphase, nuclear) are simulated cell by cell. The narrative progression is Physics → Intelligence → Computing.
 
 ## Capabilities and Constraints
 - Static HTML/CSS/vanilla JS, no build step, no dependencies; global `DPX` namespace (see `landing-page.md`).
@@ -23,7 +23,7 @@ Intelligence for the Physical World. The site's own mechanism is the proof: a li
 
 ## Brand Commitments
 - Name: DPX Labs / Digital Physics Labs; Diphyx mark at `assets/diphyx-mark.svg`.
-- Headline "Intelligence for the Physical World." is fixed. The hero subtitle and the Contact supporting line were removed at the user's request (2026-11-08).
+- Headline "Learning the Laws of Physics." with subtitle "Physics-native AI models for understanding and predicting complex physical systems." (set by the user 2026-11-08, replacing "Intelligence for the Physical World."). The Contact supporting line was removed at the user's request (2026-11-08).
 - Binding from the brief: warm off-white ground `#F3F0E9`, Inter Tight for headlines, JetBrains Mono for labels.
 - Personality: scientific, ambitious, experimental, intelligent, understated, premium.
 - Contact email: contact@dpxlabs.ai (confirmed by the user).
