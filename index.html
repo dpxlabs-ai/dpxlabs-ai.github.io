@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DPX Labs — Intelligence for the Physical World</title>
+  <meta name="description" content="DPX Labs is an independent AI research initiative exploring the intersection of physical sciences, machine learning and computing.">
+  <meta name="theme-color" content="#F3F0E9">
+  <link rel="icon" href="assets/diphyx-mark.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#vision">Skip to content</a>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="DPX Labs, back to top">
+      <img src="assets/diphyx-mark.svg" alt="" width="11" height="22">
+      <span>DPX LABS</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#research">RESEARCH</a>
+      <a href="#about">ABOUT</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="top" aria-label="Introduction">
+      <div class="intro">
+        <h1>Intelligence for the Physical World.</h1>
+      </div>
+
+      <div class="matrix" id="physics-hero">
+        <canvas role="img" aria-label="ASCII physics simulation"></canvas>
+      </div>
+
+      <nav class="scene-nav" aria-label="Simulations">
+        <button type="button" data-scene="flow" aria-pressed="true">FLUIDS<span class="bar"><i></i></span></button>
+        <button type="button" data-scene="combustion" aria-pressed="false">REACTIONS<span class="bar"><i></i></span></button>
+        <button type="button" data-scene="thermal" aria-pressed="false">HEAT TRANSFER<span class="bar"><i></i></span></button>
+        <button type="button" data-scene="propulsion" aria-pressed="false">PROPULSION<span class="bar"><i></i></span></button>
+        <button type="button" data-scene="engine" aria-pressed="false">ENGINE<span class="bar"><i></i></span></button>
+        <button type="button" data-scene="power" aria-pressed="false">POWER<span class="bar"><i></i></span></button>
+        <button type="button" data-scene="wind" aria-pressed="false">WIND<span class="bar"><i></i></span></button>
+        <button type="button" data-scene="pump" aria-pressed="false">MULTIPHASE<span class="bar"><i></i></span></button>
+        <button type="button" data-scene="nuclear" aria-pressed="false">NUCLEAR<span class="bar"><i></i></span></button>
+      </nav>
+    </section>
+
+    <section class="spread spread--vision" id="vision" aria-labelledby="vision-h">
+      <p class="rail"><span class="idx">01</span><span class="label">Our vision</span></p>
+      <div class="col">
+        <h2 id="vision-h" class="display">The world is governed by physics. <span class="turn">AI should understand it.</span></h2>
+        <p class="lede">We are exploring a new generation of AI models that learn, predict, and reason about physical systems.</p>
+      </div>
+    </section>
+
+    <section class="spread" id="direction" aria-labelledby="direction-h">
+      <p class="rail"><span class="idx">02</span><span class="label">Our direction</span></p>
+      <div class="col">
+        <h2 id="direction-h" class="title">Building intelligence grounded in physics.</h2>
+        <ol class="directions">
+          <li>
+            <canvas class="micro" data-field="wave" aria-hidden="true"></canvas>
+            <h3>Physics Models</h3>
+            <p>Learning the behavior of physical systems.</p>
+          </li>
+          <li>
+            <canvas class="micro" data-field="flow" aria-hidden="true"></canvas>
+            <h3>Simulation</h3>
+            <p>Predicting how complex phenomena evolve.</p>
+          </li>
+          <li>
+            <canvas class="micro" data-field="sense" aria-hidden="true"></canvas>
+            <h3>Physical Intelligence</h3>
+            <p>Connecting computational models with the real world.</p>
+          </li>
+          <li>
+            <canvas class="micro" data-field="lattice" aria-hidden="true"></canvas>
+            <h3>Computing</h3>
+            <p>Exploring architectures built for physics-native AI.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="spread" id="research" aria-labelledby="research-h">
+      <div class="rail"><span class="idx">03</span><span class="label">Research</span><p class="status"><i aria-hidden="true"></i>Research in progress</p></div>
+      <div class="col">
+        <h2 id="research-h" class="title">Beyond pattern recognition.</h2>
+        <p class="lede">Toward models grounded in the laws and dynamics of the physical world.</p>
+
+        <h3 class="minor">Areas we are exploring</h3>
+        <ul class="topics">
+          <li>Neural Operators</li>
+          <li>Physics-Informed Learning</li>
+          <li>Generative Physical Models</li>
+          <li>Scientific Computing</li>
+        </ul>
+
+        <div class="pubs" aria-labelledby="pubs-h">
+          <h3 class="minor" id="pubs-h">Papers &amp; announcements</h3>
+          <p class="empty">Nothing published yet. Papers and model announcements will be listed here when they are released.</p>
+          <!-- When the first paper is out, remove .empty above and add entries:
+          <ol class="pub-list">
+            <li>
+              <time datetime="YYYY-MM">Mon YYYY</time>
+              <a href="URL">Paper title</a>
+              <span class="pub-kind">Paper</span>
+            </li>
+          </ol>
+          -->
+        </div>
+      </div>
+    </section>
+
+    <section class="spread" id="about" aria-labelledby="about-h">
+      <p class="rail"><span class="idx">04</span><span class="label">About</span></p>
+      <div class="col">
+        <h2 id="about-h" class="title">Digital Physics Labs.</h2>
+        <div class="prose">
+          <p>DPX Labs is an independent AI research initiative exploring the intersection of physical sciences, machine learning, and computing.</p>
+          <p>Our ambition is to develop intelligence that understands more than data—it understands how the physical world behaves.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="spread spread--contact" id="contact" aria-labelledby="contact-h">
+      <div class="col">
+        <h2 id="contact-h" class="display">Let's explore what's possible.</h2>
+        <!-- Contact address: change both the href and the text below. -->
+        <a class="mail" href="mailto:contact@dpxlabs.ai">
+          <span>contact@dpxlabs.ai</span>
+          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <canvas class="band" data-field="calm" data-font="11" aria-hidden="true"></canvas>
+  </main>
+
+  <footer class="site-footer">© 2026 DPX Labs</footer>
+
+  <script src="js/core.js"></script>
+  <script src="js/ascii-renderer.js"></script>
+  <script src="js/physics-scene.js"></script>
+  <script src="js/scenes/pipe-flow-scene.js"></script>
+  <script src="js/scenes/flame-scene.js"></script>
+  <script src="js/scenes/heat-exchanger-scene.js"></script>
+  <script src="js/scenes/rocket-engine-scene.js"></script>
+  <script src="js/scenes/car-engine-scene.js"></script>
+  <script src="js/scenes/gas-turbine-scene.js"></script>
+  <script src="js/scenes/wind-turbine-scene.js"></script>
+  <script src="js/scenes/pump-cavitation-scene.js"></script>
+  <script src="js/scenes/nuclear-loop-scene.js"></script>
+  <script src="js/scene-transition.js"></script>
+  <script src="js/physics-hero.js"></script>
+  <script src="js/micro-field.js"></script>
+  <script src="js/site.js"></script>
+  <script>
+    (function () {
+      var family = '"JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace';
+      var boot = function () {
+        new DPX.PhysicsHero(document.getElementById('physics-hero'), { fontFamily: family });
+        DPX.initMicroFields({ fontFamily: family });
+      };
+      var fontReady = document.fonts && document.fonts.load ? document.fonts.load('12px "JetBrains Mono"') : Promise.resolve();
+      Promise.race([fontReady, new Promise(function (r) { setTimeout(r, 1200); })]).then(boot, boot);
+    })();
+  </script>
+</body>
+</html>
