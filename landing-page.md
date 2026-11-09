@@ -151,7 +151,7 @@ Tuned for the warm off-white background `#F3F0E9`:
 
 Automatic cycle:
 
-**FLUIDS → REACTIONS → HEAT TRANSFER → PROPULSION → ENGINE → POWER → WIND → MULTIPHASE → NUCLEAR → (repeat)**
+**PROPULSION → REACTIONS → HEAT TRANSFER → FLUIDS → ENGINE → POWER → WIND → MULTIPHASE → NUCLEAR → (repeat)**
 
 - Each scene runs for **4 seconds**. A transition takes **1.9 seconds**.
 - `SceneTransition` gives each cell a release time and a rebuild time from a smooth fBm noise field mixed with a left-to-right sweep, so the change moves as a coherent front.
@@ -160,7 +160,7 @@ Automatic cycle:
 
 ## Interaction
 
-- Nine understated mono labels below the matrix: **FLUIDS / REACTIONS / HEAT TRANSFER / PROPULSION / ENGINE / POWER / WIND / MULTIPHASE / NUCLEAR**. They wrap on narrow screens.
+- Nine understated mono labels below the matrix: **PROPULSION / REACTIONS / HEAT TRANSFER / FLUIDS / ENGINE / POWER / WIND / MULTIPHASE / NUCLEAR**. They wrap on narrow screens.
 - Clicking a label switches to that scene (with a transition). The active label has `aria-pressed="true"` and a thin underline that fills as a progress bar over the scene's 4 seconds.
 - `?scene=<id or label>` in the URL picks the starting scene. Scene ids stay stable (`flow`, `combustion`, `thermal`, `propulsion`, `engine`, `power`, `wind`, `pump`, `nuclear`); labels also work, with hyphens for spaces (e.g. `?scene=heat-transfer`, `?scene=multiphase`).
 - Moving the cursor over the matrix (crosshair cursor) adds a localized disturbance. Its strength comes from pointer speed and fades over time. Each scene reacts in a physically sensible way: stirring flow, pushing the flame, revving the engine, adding load, adding a gust, triggering cavitation, withdrawing control rods.

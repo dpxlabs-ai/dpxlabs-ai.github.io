@@ -11,7 +11,7 @@
       this.buttons = Array.from(document.querySelectorAll('[data-scene]'));
       this.opts = Object.assign({ sceneDuration: 4, transitionDuration: 1.9, fontFamily: 'monospace' }, opts);
       this.renderer = new DPX.AsciiRenderer(this.canvas, { fontFamily: this.opts.fontFamily, background: DPX.BACKGROUND });
-      this.scenes = [new DPX.PipeFlowScene(), new DPX.FlameScene(), new DPX.HeatExchangerScene(), new DPX.RocketEngineScene(), new DPX.CarEngineScene(), new DPX.GasTurbineScene(),
+      this.scenes = [new DPX.RocketEngineScene(), new DPX.FlameScene(), new DPX.HeatExchangerScene(), new DPX.PipeFlowScene(), new DPX.CarEngineScene(), new DPX.GasTurbineScene(),
         new DPX.WindTurbineScene(), new DPX.PumpCavitationScene(), new DPX.NuclearLoopScene()];
       this.transition = new DPX.SceneTransition();
       this.index = 0;
