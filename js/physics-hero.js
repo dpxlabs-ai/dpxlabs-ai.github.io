@@ -9,7 +9,7 @@
       this.root = root;
       this.canvas = root.querySelector('canvas');
       this.buttons = Array.from(document.querySelectorAll('[data-scene]'));
-      this.opts = Object.assign({ sceneDuration: 4, transitionDuration: 1.9, fontFamily: 'monospace' }, opts);
+      this.opts = Object.assign({ sceneDuration: 4, transitionDuration: 2.1, fontFamily: 'monospace' }, opts);
       this.renderer = new DPX.AsciiRenderer(this.canvas, { fontFamily: this.opts.fontFamily, background: DPX.BACKGROUND });
       this.scenes = [new DPX.RocketEngineScene(), new DPX.FlameScene(), new DPX.HeatExchangerScene(), new DPX.PipeFlowScene(), new DPX.CarEngineScene(), new DPX.GasTurbineScene(),
         new DPX.WindTurbineScene(), new DPX.PumpCavitationScene(), new DPX.NuclearLoopScene()];
@@ -125,7 +125,7 @@
         const tr = this.trans;
         tr.p += dt / this.opts.transitionDuration;
         const A = this.scenes[tr.from], B = this.scenes[tr.to];
-        if (tr.p < 0.55) A.step(simDt, p);
+        if (tr.p < 0.9) A.step(simDt, p); // A stays partly visible while the scenes merge
         B.step(simDt, p);
         this.transition.compose(A, B, Math.min(1, tr.p), now / 1000, this.outCode, this.outColor);
         this.renderer.draw(DPX.resolveGlyphs(this.outCode, this.drawCode, now / 1000), this.outColor);
