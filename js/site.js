@@ -8,10 +8,11 @@
     new IntersectionObserver(([e]) => header.classList.toggle('is-scrolled', !e.isIntersecting), {
       rootMargin: '-72px 0px 0px 0px',
       threshold: 0.9,
-    }).observe(hero.querySelector('.intro'));
+    }).observe(hero.querySelector('.intro') || hero.querySelector('h1') || hero);
   }
 
-  const links = Array.from(document.querySelectorAll('.site-nav a'));
+  // Only same-page #hash links follow the scroll; links to other pages keep their own state.
+  const links = Array.from(document.querySelectorAll('.site-nav a')).filter((a) => /^#[\w-]+$/.test(a.getAttribute('href')));
   const targets = links.map((a) => document.querySelector(a.getAttribute('href')));
   const inView = new Map();
   const update = () => {
@@ -22,6 +23,9 @@
       if (top <= window.innerHeight * 0.5 && top > bestTop) { best = i; bestTop = top; }
     });
     links.forEach((a, i) => (i === best ? a.setAttribute('aria-current', 'true') : a.removeAttribute('aria-current')));
+    // A link to the current page keeps aria-current="page" unless a section link is active.
+    document.querySelectorAll('.site-nav a[data-page]').forEach((a) =>
+      best < 0 ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
   };
   const io = new IntersectionObserver((es) => {
     es.forEach((e) => inView.set(e.target, e.isIntersecting));

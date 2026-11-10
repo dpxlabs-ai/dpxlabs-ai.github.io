@@ -19,7 +19,7 @@ Learning the Laws of Physics. The site's own mechanism is the proof: a live ASCI
 - Static HTML/CSS/vanilla JS, no build step, no dependencies; global `DPX` namespace (see `landing-page.md`).
 - The ASCII physics engine and its nine scenes, transitions, pointer interaction and reduced-motion behaviour must be preserved.
 - Research is at an exploratory stage. Topics being explored: neural operators, physics-informed learning, generative physical models, scientific computing.
-- Single-page site with anchor navigation (Research, About, Contact). No Models, Platform or Hardware pages until there is something real to show.
+- Top navigation: RESEARCH (links to the Research page) and CONTACT. The homepage keeps its About section but it is no longer in the nav. Research page (`research.html`, added 2026-11-09). No Models, Platform or Hardware pages until there is something real to show.
 
 ## Brand Commitments
 - Name: DPX Labs / Digital Physics Labs; Diphyx mark at `assets/diphyx-mark.svg`.
@@ -27,11 +27,12 @@ Learning the Laws of Physics. The site's own mechanism is the proof: a live ASCI
 - Binding from the brief: warm off-white ground `#F3F0E9`, Inter Tight for headlines, JetBrains Mono for labels.
 - Personality: scientific, ambitious, experimental, intelligent, understated, premium.
 - Contact email: dpxlabs@diphyx.com (set by the user 2026-11-08, replacing contact@dpxlabs.ai).
-- Copy must not mention energy, power generation, industrial plants or equipment markets.
+- Copy must not mention energy, power generation, industrial plants or equipment markets. Exception: citations of published papers are shown verbatim (e.g. coal-combustion titles in the founders' prior work).
 
 ## Evidence on Hand
 - The live ASCII physics hero (`js/`), the only demonstration.
-- No publications, models, benchmarks, customers, partners, investors or testimonials exist. None may be invented; research must read as in progress.
+- No models, benchmarks, customers, partners, investors or testimonials exist. None may be invented; research must read as in progress.
+- Publications: one DPX Labs paper (SC26, status to confirm) and the founders' prior work (2014–2017), listed separately on the Research page.
 
 ## Product Principles
 - The characters are the simulation: demonstrate, don't decorate.

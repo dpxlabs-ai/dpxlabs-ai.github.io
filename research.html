@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Research — DPX Labs</title>
+  <meta name="description" content="DPX Labs research: physics-grounded AI built on a background in turbulence, reacting flows and high-performance simulation. One-Dimensional Turbulence, how we build, and publications.">
+  <meta name="theme-color" content="#F3F0E9">
+  <meta property="og:title" content="Research — DPX Labs">
+  <meta property="og:description" content="AI models that respect the physics they predict, and know when they're wrong.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/diphyx-mark.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-research">
+  <a class="skip" href="#odt">Skip to content</a>
+
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="DPX Labs, home">
+      <img src="assets/diphyx-mark.svg" alt="" width="11" height="22">
+      <span>DPX LABS</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="research.html" data-page aria-current="page">RESEARCH</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="spread spread--intro" id="top" aria-labelledby="research-h">
+      <div class="rail"><span class="label">Research</span><p class="status"><i aria-hidden="true"></i>Research in progress</p></div>
+      <div class="col">
+        <h1 id="research-h" class="display">Beyond pattern recognition.</h1>
+        <p class="lede">We build AI models that respect the physics they predict, <span class="turn">and know when they're wrong.</span></p>
+        <div class="prose">
+          <p>Our founders come from computational fluid dynamics, turbulent reacting flows and high-performance simulation, building both the models and the solvers.</p>
+          <p>DPX Labs carries that experience into machine learning: models that learn from physics and are checked against it.</p>
+        </div>
+        <p class="facts">CFD · Combustion · Turbulent reacting flows · HPC · Multiphysics DSL</p>
+      </div>
+    </section>
+
+    <nav class="page-index" aria-label="On this page">
+      <div class="page-index__row">
+        <a href="#odt"><span class="n">01</span>ODT<span class="bar"><i></i></span></a>
+        <a href="#areas"><span class="n">02</span>Areas<span class="bar"><i></i></span></a>
+        <a href="#build"><span class="n">03</span>How we build<span class="bar"><i></i></span></a>
+        <a href="#principles"><span class="n">04</span>Principles<span class="bar"><i></i></span></a>
+        <a href="#publications"><span class="n">05</span>Publications<span class="bar"><i></i></span></a>
+      </div>
+    </nav>
+
+    <!-- 01 · One-Dimensional Turbulence -->
+    <section class="spread" id="odt" aria-labelledby="odt-h">
+      <p class="rail"><span class="idx">01</span><span class="label">One-Dimensional Turbulence</span></p>
+      <div class="col">
+        <h2 id="odt-h" class="title">One line through a turbulent world.</h2>
+        <div class="prose">
+          <p>One-Dimensional Turbulence follows a single line of sight through a turbulent flow and resolves every scale along it, down to where mixing, heat release and chemistry actually happen. Three-dimensional eddies are represented by stochastic rearrangements of that line. The result keeps the physics that matter at a small fraction of a full 3D simulation's cost.</p>
+          <p><strong>Why it matters for AI.</strong> A compact representation that still respects the physics is exactly what a learning system needs: cheaper training data, a sharper inductive bias, and predictions that can be checked against the equations.</p>
+        </div>
+        <p class="note">ODT was introduced by Alan Kerstein at Sandia National Laboratories. Our team has developed and applied ODT-based methods for turbulent reacting flows.
+          <a class="more-link more-link--down" href="#publications">Selected papers<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a>
+        </p>
+      </div>
+
+      <figure class="field-figure" aria-labelledby="fig1-cap">
+        <div class="ff-labels">
+          <span class="ff-l ff-l--field">Turbulent field</span>
+          <span class="ff-l ff-l--line">Line of sight <b aria-hidden="true">━</b></span>
+          <span class="ff-l ff-l--strip">The line, resolved<small>Temperature ↑ · position →</small></span>
+        </div>
+        <canvas class="odt" data-field="odt" aria-hidden="true"></canvas>
+        <figcaption id="fig1-cap">
+          <span class="fig">Fig. 1</span>
+          <span class="cap">A line of sight through a turbulent field, resolved at every scale. Each eddy is a triplet map: a segment of the line is compressed into three copies and the middle copy is reversed, folding the profile and sharpening its gradients. Illustration, not simulation output.</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- 02 · Areas -->
+    <section class="spread" id="areas" aria-labelledby="areas-h">
+      <p class="rail"><span class="idx">02</span><span class="label">Areas</span></p>
+      <div class="col">
+        <h2 id="areas-h" class="title">Four questions we are working on.</h2>
+        <ul class="areas">
+          <li>
+            <h3>Neural Operators</h3>
+            <p>Learning mappings between functions, not between fixed grids of numbers, so that one model generalizes across geometries and conditions.</p>
+          </li>
+          <li>
+            <h3>Physics-Informed Learning</h3>
+            <p>Conservation laws as hard constraints, not just penalty terms. A model that can break a mass or energy balance can't be trusted, however small its error.</p>
+          </li>
+          <li>
+            <h3>Generative Physical Models</h3>
+            <p>Sampling plausible physical states, not only point predictions. Generative models have to earn their place against simpler baselines.</p>
+          </li>
+          <li>
+            <h3>Scientific Computing</h3>
+            <p>Reduced-order models, solvers, verified data generation and high-performance computing: the foundation every learned model stands on.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 03 · How we build -->
+    <section class="spread" id="build" aria-labelledby="build-h">
+      <p class="rail"><span class="idx">03</span><span class="label">How we build</span></p>
+      <div class="col">
+        <h2 id="build-h" class="title">Physics first, learning on top.</h2>
+        <p class="lede">The shape of the system, not its internals.</p>
+
+        <div class="arch">
+          <canvas class="arch-conduit" data-field="conduit" aria-hidden="true"></canvas>
+          <ol class="arch-stages">
+            <li class="arch-stage">
+              <span class="arch-name">Data</span><span class="arch-wire" aria-hidden="true"></span>
+              <span class="arch-desc">Sensors and simulations</span>
+            </li>
+            <li class="arch-stage">
+              <span class="arch-name">Physics model <span class="mk">(1)</span></span><span class="arch-wire" aria-hidden="true"></span>
+              <span class="arch-desc">Reduced-order and differentiable</span>
+            </li>
+            <li class="arch-stage">
+              <span class="arch-name">Learned surrogate</span><span class="arch-wire" aria-hidden="true"></span>
+              <span class="arch-desc">Geometry-aware neural operator</span>
+            </li>
+            <li class="arch-stage">
+              <span class="arch-name">Trust check <span class="mk">(2)</span></span><span class="arch-wire" aria-hidden="true"></span>
+              <span class="arch-desc">Physics residual · out-of-distribution flag · calibrated interval</span>
+              <span class="arch-fallback">↳ Out of trust: reference solver → verified data → back to the learned surrogate <span class="mk">(3)</span></span>
+            </li>
+            <li class="arch-stage">
+              <span class="arch-name">Answer</span><span class="arch-wire" aria-hidden="true"></span>
+              <span class="arch-desc">With calibrated uncertainty</span>
+            </li>
+          </ol>
+          <div class="arch-loop" aria-hidden="true"></div>
+          <div class="arch-loop-labels" aria-hidden="true">
+            <span class="l-data">Verified data <span class="mk">(3)</span></span>
+            <span class="l-solver">Reference solver</span>
+          </div>
+        </div>
+
+        <ol class="arch-notes">
+          <li><span class="mk">(1)</span><p><strong>Physics first.</strong> A differentiable physics model sits underneath. Learning corrects it rather than replacing it.</p></li>
+          <li><span class="mk">(2)</span><p><strong>Every prediction carries a certificate.</strong> A physics residual, a calibrated interval and an out-of-distribution flag. Anything outside the trusted region goes to a full solver.</p></li>
+          <li><span class="mk">(3)</span><p><strong>Every fallback teaches the model.</strong> Solver results become verified training data.</p></li>
+        </ol>
+
+        <div class="oss">
+          <p>Built on open, widely used scientific software.</p>
+          <p class="oss-names">PyTorch · OpenFOAM · NVIDIA PhysicsNeMo · NeuralOperator · Pyro · MAPIE</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 · Principles -->
+    <section class="spread" id="principles" aria-labelledby="principles-h">
+      <p class="rail"><span class="idx">04</span><span class="label">Principles</span></p>
+      <div class="col">
+        <h2 id="principles-h" class="title">Rules we work by.</h2>
+        <dl class="principles">
+          <div><dt>Validate against physics.</dt><dd>Mass and energy must close. Plausible-looking doesn't count.</dd></div>
+          <div><dt>Quantify uncertainty.</dt><dd>A prediction without calibrated error bars is unfinished.</dd></div>
+          <div><dt>Simple baselines first.</dt><dd>A complex model ships only when it beats the simple ones.</dd></div>
+          <div><dt>Honest about stage.</dt><dd>Results are published when they exist, not before.</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- 05 · Publications -->
+    <section class="spread" id="publications" aria-labelledby="pubs-h">
+      <p class="rail"><span class="idx">05</span><span class="label">Publications</span></p>
+      <div class="col">
+        <h2 id="pubs-h" class="title">Papers and prior work.</h2>
+
+        <h3 class="minor">DPX Labs</h3>
+        <!-- TODO: confirm the SC26 status (accepted paper / poster / workshop) and set the kind tag to match;
+             wrap the title in <a href="…">…<svg/></a> once a preprint or DOI exists. -->
+        <ol class="pub-list pub-list--lead">
+          <li>
+            <time datetime="2026">2026</time>
+            <div class="pub-body">
+              <span class="pub-title">A Physics-Informed AI Architecture for One-Dimensional Turbulence Modeling</span>
+              <span class="pub-meta"><b>Goshayeshi</b> — Supercomputing 2026 (SC26)</span>
+            </div>
+            <span class="pub-kind">SC26</span>
+          </li>
+        </ol>
+
+        <h3 class="minor">Prior work by our team</h3>
+        <!-- Titles are citations and are shown verbatim. TODO: add DOI links (title becomes an <a> with the arrow svg). -->
+        <ol class="pub-list pub-list--prior">
+          <li>
+            <time datetime="2017">2017</time>
+            <div class="pub-body">
+              <span class="pub-title">Progress with Nebo: a portable, performant EDSL for multiphysics applications</span>
+              <span class="pub-meta">Ravichandran, Brown, <b>Goshayeshi</b>, Sutherland — WOLFHPC 2017</span>
+            </div>
+            <span class="pub-kind">Workshop</span>
+          </li>
+          <li>
+            <time datetime="2016">2016</time>
+            <div class="pub-body">
+              <span class="pub-title">An evaluation of the efficacy of various coal combustion models for predicting char burnout</span>
+              <span class="pub-meta">McConnell, <b>Goshayeshi</b>, Sutherland — Fuel</span>
+            </div>
+            <span class="pub-kind">Journal</span>
+          </li>
+          <li>
+            <time datetime="2016" class="same"><span class="sr">2016</span></time>
+            <div class="pub-body">
+              <span class="pub-title">An improved model for heat transfer at particle surfaces during heterogeneous char combustion</span>
+              <span class="pub-meta"><b>Goshayeshi</b>, McConnell, Sutherland — Western States Section of the Combustion Institute</span>
+            </div>
+            <span class="pub-kind">Proceedings</span>
+          </li>
+          <li>
+            <time datetime="2015">2015</time>
+            <div class="pub-body">
+              <span class="pub-title">A comparative study of thermochemistry models for oxy-coal combustion simulation</span>
+              <span class="pub-meta"><b>Goshayeshi</b>, Sutherland — Combustion and Flame 162(10)</span>
+            </div>
+            <span class="pub-kind">Journal</span>
+          </li>
+          <li>
+            <time datetime="2014">2014</time>
+            <div class="pub-body">
+              <span class="pub-title">Prediction of oxy-coal flame stand-off using high-fidelity thermochemical models and the one-dimensional turbulence model</span>
+              <span class="pub-meta"><b>Goshayeshi</b>, Sutherland — Proceedings of the Combustion Institute 35(3)</span>
+            </div>
+            <span class="pub-kind">Proceedings</span>
+          </li>
+          <li>
+            <time datetime="2014" class="same"><span class="sr">2014</span></time>
+            <div class="pub-body">
+              <span class="pub-title">A comparison of various models in predicting ignition delay in single-particle coal combustion</span>
+              <span class="pub-meta"><b>Goshayeshi</b>, Sutherland — Combustion and Flame 161(7)</span>
+            </div>
+            <span class="pub-kind">Journal</span>
+          </li>
+          <li>
+            <time datetime="2014" class="same"><span class="sr">2014</span></time>
+            <div class="pub-body">
+              <span class="pub-title">Coal combustion simulation using one-dimensional turbulence model</span>
+              <span class="pub-meta"><b>Goshayeshi</b> — Ph.D. dissertation, The University of Utah</span>
+            </div>
+            <span class="pub-kind">Thesis</span>
+          </li>
+        </ol>
+        <!-- TODO: Google Scholar profile link:
+        <p class="pub-more"><a class="more-link" href="SCHOLAR_URL">All work on Google Scholar<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a></p>
+        -->
+      </div>
+    </section>
+
+    <section class="spread spread--contact" id="contact" aria-labelledby="contact-h">
+      <div class="col">
+        <h2 id="contact-h" class="display">Working on similar problems?</h2>
+        <a class="mail" href="mailto:dpxlabs@diphyx.com">
+          <span>dpxlabs@diphyx.com</span>
+          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <canvas class="band" data-field="calm" data-font="11" aria-hidden="true"></canvas>
+  </main>
+
+  <footer class="site-footer">© 2026 DPX Labs</footer>
+
+  <script src="js/core.js"></script>
+  <script src="js/ascii-renderer.js"></script>
+  <script src="js/micro-field.js"></script>
+  <script src="js/site.js"></script>
+  <script src="js/page-index.js"></script>
+  <script>
+    (function () {
+      var family = '"JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace';
+      var boot = function () { DPX.initMicroFields({ fontFamily: family }); };
+      var fontReady = document.fonts && document.fonts.load ? document.fonts.load('12px "JetBrains Mono"') : Promise.resolve();
+      Promise.race([fontReady, new Promise(function (r) { setTimeout(r, 1200); })]).then(boot, boot);
+    })();
+  </script>
+</body>
+</html>
