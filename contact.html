@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="page-contact">
-  <a class="skip" href="#contact-form">Skip to the form</a>
+  <a class="skip" href="#write">Skip to the form</a>
 
   <header class="site-header">
     <a class="brand" href="index.html" aria-label="DPX Labs, home">
@@ -37,12 +37,13 @@
         <h1 id="contact-page-h" class="display">Write to us.</h1>
         <p class="lede">We are a small research team. Use the form, or the address at the foot of the page.</p>
 
-        <div class="form-wrap">
+        <div class="form-wrap" id="write">
           <!-- Sent state. Without script it is shown by the #sent fragment that FormSubmit redirects to;
                with script, js/contact-form.js shows it after a successful send. -->
           <div class="sent" id="sent" role="status" tabindex="-1">
             <p class="status"><i aria-hidden="true"></i>Message sent</p>
             <p class="lede">Thank you. Your message is on its way to us.</p>
+            <p class="teaser-more"><a class="more-link" id="write-again" href="contact.html">Write another message<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a></p>
           </div>
 
           <!-- FormSubmit (formsubmit.co). The first submission sends an activation email to the inbox below;
@@ -61,36 +62,36 @@
 
             <div class="form-head">
               <p class="minor" id="reason-label">Reason for writing</p>
-              <p class="minor">All fields are required</p>
-            </div>
-            <!-- The chosen reason is sent as the email subject. -->
-            <div class="choices" id="f-reason" role="radiogroup" aria-labelledby="reason-label" aria-required="true" aria-describedby="err-reason">
-              <label class="choice">
-                <input type="radio" name="_subject" value="Research collaboration" required>
-                <span class="choice-name">Research collaboration</span>
-                <span class="choice-desc">Groups working on turbulence, reacting flows, neural operators or uncertainty quantification. Tell us the problem you are working on.</span>
-              </label>
-              <label class="choice">
-                <input type="radio" name="_subject" value="Introduction">
-                <span class="choice-name">Joining us</span>
-                <span class="choice-desc">Researchers and engineers in scientific machine learning and computational physics. We have no open roles at present. Introductions are welcome.</span>
-              </label>
-              <label class="choice">
-                <input type="radio" name="_subject" value="Investor enquiry">
-                <span class="choice-name">Investors</span>
-                <span class="choice-desc">People who fund long-horizon research.</span>
-              </label>
-              <label class="choice">
-                <input type="radio" name="_subject" value="Press or speaking request">
-                <span class="choice-name">Press and speaking</span>
-                <span class="choice-desc">Interviews, talks and panels.</span>
-              </label>
-              <label class="choice">
-                <input type="radio" name="_subject" value="General enquiry">
-                <span class="choice-name">Something else</span>
-              </label>
+              <p class="minor">All required</p>
             </div>
             <p class="field-error" id="err-reason"></p>
+            <!-- The chosen reason is sent as the email subject. -->
+            <div class="choices" id="f-reason" role="radiogroup" aria-labelledby="reason-label" aria-required="true">
+              <label class="choice">
+                <input type="radio" name="_subject" value="Research collaboration" required aria-labelledby="n-collab" aria-describedby="d-collab err-reason">
+                <span class="choice-name" id="n-collab">Research collaboration</span>
+                <span class="choice-desc" id="d-collab">Groups working on turbulence, reacting flows, neural operators or uncertainty quantification. Tell us the problem you are working on.</span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="_subject" value="Introduction" aria-labelledby="n-join" aria-describedby="d-join err-reason">
+                <span class="choice-name" id="n-join">Joining us</span>
+                <span class="choice-desc" id="d-join">Researchers and engineers in scientific machine learning and computational physics. We have no open roles at present. Introductions are welcome.</span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="_subject" value="Investor enquiry" aria-labelledby="n-invest" aria-describedby="d-invest err-reason">
+                <span class="choice-name" id="n-invest">Investment</span>
+                <span class="choice-desc" id="d-invest">For people who fund long-horizon research.</span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="_subject" value="Press or speaking request" aria-labelledby="n-press" aria-describedby="d-press err-reason">
+                <span class="choice-name" id="n-press">Press and speaking</span>
+                <span class="choice-desc" id="d-press">Interviews, talks and panels.</span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="_subject" value="General enquiry" aria-labelledby="n-other" aria-describedby="err-reason">
+                <span class="choice-name" id="n-other">Something else</span>
+              </label>
+            </div>
 
             <div class="field-row">
               <div class="field">
@@ -100,26 +101,27 @@
               </div>
               <div class="field">
                 <label class="minor" for="f-email">Email</label>
-                <input type="email" id="f-email" name="email" autocomplete="email" inputmode="email" spellcheck="false" required aria-describedby="err-email">
+                <input type="email" id="f-email" name="email" autocomplete="email" spellcheck="false" required aria-describedby="err-email">
                 <p class="field-error" id="err-email"></p>
               </div>
             </div>
 
             <div class="field field--message">
               <label class="minor" for="f-message">Message</label>
-              <p class="field-hint" id="hint-message">Who you are, the problem, and what you would like from us. Please leave confidential data out of a first message.</p>
-              <textarea id="f-message" name="message" rows="6" required aria-describedby="hint-message err-message"></textarea>
+              <p class="field-hint" id="hint-message">Who you are and what you would like from us. Please leave confidential material out of a first message.</p>
+              <textarea id="f-message" name="message" rows="4" required aria-describedby="hint-message err-message"></textarea>
               <p class="field-error" id="err-message"></p>
             </div>
 
             <p class="form-status" id="form-status" role="status"></p>
+            <p class="sr" id="send-live" role="status"></p>
 
             <div class="send-row">
               <button class="send" type="submit">
                 <span>Send message</span>
-                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M4 12h16M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
               </button>
-              <p class="form-privacy">This form is delivered by FormSubmit, a third-party service. Your message passes through their servers on the way to us.</p>
+              <p class="form-privacy">Messages are delivered by FormSubmit, a third-party service, and pass through its servers on the way to us. To avoid that, use the address below.</p>
             </div>
           </form>
         </div>

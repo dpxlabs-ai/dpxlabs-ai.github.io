@@ -394,8 +394,8 @@ button[aria-pressed="true"] .bar { background: var(--rule); }
   display: inline-flex;
   align-items: center;
   gap: 0.4em;
-  margin-top: clamp(40px, 6vh, 64px);
-  padding-bottom: 10px;
+  margin-top: clamp(34px, 6vh, 58px);
+  padding: 6px 0 10px; /* 6px above keeps the target 44px tall at the smallest size */
   font-weight: 300;
   font-size: clamp(26px, 3.4vw, 46px);
   letter-spacing: -0.03em;
@@ -720,7 +720,8 @@ html:has(.page-index) { scroll-padding-top: calc(var(--header-h) + var(--index-h
 .form-wrap { margin-top: var(--block); }
 .form .hp { display: none; }
 
-.form-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px var(--gap); flex-wrap: wrap; }
+.form-head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--gap); white-space: nowrap; }
+.form-head + .field-error { margin-top: 12px; }
 
 /* Reason for writing: a radio group set as rows. The row is the label. */
 .choices { margin-top: 14px; border-top: 1px solid var(--ink); }
@@ -742,29 +743,39 @@ html:has(.page-index) { scroll-padding-top: calc(var(--header-h) + var(--index-h
   font-size: clamp(22px, 1.9vw, 27px);
   line-height: 1.15;
   letter-spacing: -0.02em;
+  transition: color 0.3s ease;
 }
 .choice-name::before {
   content: "";
   flex: none;
   position: relative;
-  top: -0.2em;
+  top: calc(3.5px - 0.364em); /* centred on the cap height at every size */
+  box-sizing: border-box;
   width: 7px;
   height: 7px;
-  box-shadow: inset 0 0 0 1px var(--ink);
-  transition: background-color 0.3s var(--ease);
+  border: 1px solid var(--ink);
+  transition: background-color 0.3s var(--ease), border-color 0.3s ease;
 }
+.choice-desc { max-width: 40ch; font-size: 16.5px; line-height: 1.5; color: var(--ink-2); transition: color 0.3s ease; }
 @media (hover: hover) {
-  .choice:hover .choice-name::before { background: var(--muted); }
+  .choice:hover .choice-name::before { background: var(--rule); }
 }
 .choice input:checked + .choice-name::before { background: var(--ink); }
-.choice:has(input:focus-visible) { outline: 1px solid var(--ink); outline-offset: 4px; }
-.choice-desc { max-width: 40ch; font-size: 16.5px; line-height: 1.5; color: var(--ink-2); }
+/* Once a reason is chosen the others step back, the way inactive nav links do. */
+.choices:has(:checked) .choice:not(:has(:checked)) :is(.choice-name, .choice-desc) { color: var(--muted); }
+.choices:has(:checked) .choice:not(:has(:checked)) .choice-name::before { border-color: var(--muted); }
+@media (hover: hover) {
+  .choices:has(:checked) .choice:not(:has(:checked)):hover .choice-name { color: var(--ink); }
+  .choices:has(:checked) .choice:not(:has(:checked)):hover .choice-name::before { border-color: var(--ink); }
+}
+/* Focus: the row's two hairlines turn to ink and the marker takes a ring. */
+.choice:has(input:focus-visible) { box-shadow: 0 -1px 0 var(--ink), inset 0 -1px 0 var(--ink); }
+.choice:has(input:focus-visible) .choice-name::before { outline: 1px solid var(--ink); outline-offset: 3px; }
 
 /* Fields: no box, one ink rule as the writing line. */
 .field-row { display: grid; grid-template-columns: 5fr 4fr; gap: var(--gap); margin-top: var(--block); }
 .field { min-width: 0; }
-.field--message { margin-top: var(--block); }
-.field label { display: block; }
+.field label { display: block; transition: color 0.3s ease; }
 .field input,
 .field textarea {
   display: block;
@@ -776,39 +787,62 @@ html:has(.page-index) { scroll-padding-top: calc(var(--header-h) + var(--index-h
   border-radius: 0;
   background: transparent;
   color: var(--ink);
+  caret-color: var(--ink);
   font: 400 clamp(22px, 1.9vw, 27px)/1.3 var(--sans);
   letter-spacing: -0.02em;
   -webkit-appearance: none;
   appearance: none;
 }
 .field input { min-height: 44px; }
-.field textarea {
-  min-height: 9em;
-  font-size: clamp(18px, 1.45vw, 21px);
-  line-height: 1.5;
-  letter-spacing: -0.01em;
-  resize: vertical;
-}
+/* Focus: the writing line thickens. A box round a boxless field would double the rule. */
+.field :is(input, textarea):focus-visible { outline: 0; box-shadow: 0 2px 0 var(--ink); }
 .field input:-webkit-autofill {
   -webkit-text-fill-color: var(--ink);
   box-shadow: 0 0 0 100px var(--bg) inset;
 }
-.field-hint { margin: 8px 0 0; max-width: 62ch; font-size: 15px; line-height: 1.6; color: var(--muted); }
+.field input:-webkit-autofill:focus-visible { box-shadow: 0 0 0 100px var(--bg) inset, 0 2px 0 var(--ink); }
+
+/* Message: the writing column on the left, its hint on the description axis. It grows with the text. */
+.field--message {
+  display: grid;
+  grid-template-columns: 5fr 4fr;
+  column-gap: var(--gap);
+  margin-top: var(--block);
+}
+.field--message > label,
+.field--message > textarea,
+.field--message > .field-error { grid-column: 1; }
+.field--message > .field-hint { grid-column: 2; grid-row: 2; align-self: start; margin-top: 16px; }
+.field textarea {
+  min-height: calc(4 * 1.5em + 12px);
+  font-size: clamp(18px, 1.45vw, 21px);
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  resize: none;
+  overflow: hidden;
+  field-sizing: content;
+}
+.field-hint { margin: 8px 0 0; max-width: 40ch; font-size: 15px; line-height: 1.6; color: var(--ink-2); }
 
 .field-error,
-.form-status { margin: 10px 0 0; max-width: 62ch; font-size: 15px; line-height: 1.4; color: var(--ink); }
+.form-status { margin: 10px 0 0; max-width: 62ch; font-weight: 500; font-size: 15px; line-height: 1.4; color: var(--ink); }
 .field-error::before,
-.form-status::before { content: "↳ "; font: 400 0.9em/1 var(--mono); }
+.form-status::before { content: "↳ "; content: "↳ " / ""; font: 400 0.9em/1 var(--mono); }
 .field-error:empty,
 .form-status:empty { display: none; }
-.form-status { margin-top: var(--block); }
+.form-status { margin-top: var(--block); font-weight: 400; }
+/* A label in error steps up from graphite to ink. */
+.field:has([aria-invalid="true"]) label,
+.form:has(.choices[aria-invalid="true"]) #reason-label { color: var(--ink); }
 
 .send-row { display: grid; grid-template-columns: 5fr 4fr; gap: var(--gap); align-items: end; margin-top: var(--block); }
-.form-status + .send-row { margin-top: 28px; }
+.form-status:not(:empty) + .sr + .send-row { margin-top: 28px; }
+/* Send: the mail link's scale and rule, with its own arrow. It acts here; it does not leave the page. */
 .send {
   justify-self: start;
   display: inline-flex;
   align-items: center;
+  justify-content: space-between;
   gap: 0.4em;
   margin: 0;
   padding: 8px 0 10px;
@@ -818,25 +852,38 @@ html:has(.page-index) { scroll-padding-top: calc(var(--header-h) + var(--index-h
   color: var(--ink);
   font: 300 clamp(26px, 3.4vw, 46px)/1.1 var(--sans);
   letter-spacing: -0.03em;
+  text-align: left;
   cursor: pointer;
   -webkit-appearance: none;
   appearance: none;
-  transition: background-size 0.6s var(--ease);
 }
-.send svg { width: 0.72em; height: 0.72em; transition: transform 0.6s var(--ease); }
-.send:hover { background-size: 0% 1px; background-position: right bottom; }
-.send:hover svg { transform: translate(0.12em, -0.12em); }
-.send[aria-disabled="true"] { cursor: default; background-size: 100% 1px; background-position: left bottom; }
-.send[aria-disabled="true"] svg { transform: none; }
-.form-privacy { margin: 0; max-width: 40ch; font-size: 15px; line-height: 1.6; color: var(--muted); }
+.send svg { width: 0.72em; height: 0.72em; flex: none; transition: transform 0.6s var(--ease); }
+.send:hover svg { transform: translateX(0.14em); }
+.send:active svg { transform: translateX(0.22em); }
+.send[aria-disabled="true"] { cursor: default; color: var(--ink-2); }
+.send[aria-disabled="true"] svg { visibility: hidden; transform: none; }
+.form-privacy { margin: 0; max-width: 40ch; font-size: 15px; line-height: 1.6; color: var(--ink-2); }
 
-/* Sent: shown by the #sent fragment (no script) or by .is-sent (script). It takes the form's place. */
+/* Sent: shown by the #sent fragment (no script) or by .is-sent (script). It takes the form's place,
+   and the lede that pointed at the form goes with it. */
 .sent { display: none; outline: 0; }
 .sent .status { margin: 0; }
+.sent .lede { color: var(--ink); }
 .sent:target,
 .is-sent .sent { display: block; }
 .sent:target ~ .form,
 .is-sent .form { display: none; }
+.col:has(.sent:target) > .lede,
+.col:has(.is-sent) > .lede { display: none; }
+
+@media (forced-colors: active) {
+  .choice input:checked + .choice-name::before { forced-color-adjust: none; background: CanvasText; border-color: CanvasText; }
+  .choice:has(input:focus-visible),
+  .field :is(input, textarea):focus-visible { outline: 2px solid Highlight; outline-offset: 2px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .choice-name, .choice-desc, .choice-name::before, .field label, .send svg { transition: none; }
+}
 
 /* ------------------------------------------------------------ responsive */
 
@@ -853,6 +900,7 @@ html:has(.page-index) { scroll-padding-top: calc(var(--header-h) + var(--index-h
   .page-index + .spread .rail { padding-top: 22px; }
   .spread--intro .rail .label { display: inline; margin-right: auto; }
   .spread--intro .rail .status { order: 0; margin: 0; }
+  .page-contact .spread--intro .rail { display: none; }
   .ff-labels {
     grid-column: 1 / -1;
     display: flex;
@@ -875,6 +923,8 @@ html:has(.page-index) { scroll-padding-top: calc(var(--header-h) + var(--index-h
   .choice { grid-template-columns: 1fr; gap: 8px; }
   .choice-desc { padding-left: 21px; }
   .field-row { grid-template-columns: 1fr; gap: var(--block); }
+  .field--message { grid-template-columns: 1fr; }
+  .field--message > .field-hint { grid-column: 1; grid-row: 2; margin-top: 8px; max-width: 62ch; }
   .send-row { grid-template-columns: 1fr; gap: 28px; }
   .arch-stages { display: block; padding-left: 60px; }
   .arch-stage { padding-bottom: 26px; }
