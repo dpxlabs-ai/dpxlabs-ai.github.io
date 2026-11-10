@@ -264,6 +264,12 @@
       c.packets = []; c.spawn = 0;
       c.speed = c.vertical ? 6 : 13;
       c.ok = c.branch > 0 && c.merge > 0;
+      // Pre-warm: advance the simulation long enough for packets to span the
+      // whole line, so the first frame already shows traffic in flight.
+      if (c.ok) {
+        const warm = c.main.length / c.speed + c.stops.length * 0.3 + 1;
+        for (let t = 0; t < warm; t += 1 / 30) this.step(c, 1 / 30);
+      }
     },
     raster(pts) {
       const out = [];
