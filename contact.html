@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — DPX Labs</title>
+  <meta name="description" content="Write to DPX Labs about research collaboration, joining the team, investment or press.">
+  <meta name="theme-color" content="#F3F0E9">
+  <meta property="og:title" content="Contact — DPX Labs">
+  <meta property="og:description" content="Write to DPX Labs about research collaboration, joining the team, investment or press.">
+  <meta property="og:type" content="website">
+  <!-- TODO: add <link rel="canonical"> once the site's domain is settled (CNAME and PRODUCT.md disagree). -->
+  <link rel="icon" href="assets/diphyx-mark.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-contact">
+  <a class="skip" href="#contact-form">Skip to the form</a>
+
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="DPX Labs, home">
+      <img src="assets/diphyx-mark.svg" alt="" width="11" height="22">
+      <span>DPX LABS</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="research.html">RESEARCH</a>
+      <a href="contact.html" data-page aria-current="page">CONTACT</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="spread spread--intro" id="top" aria-labelledby="contact-page-h">
+      <div class="rail"><span class="label">Contact</span></div>
+      <div class="col">
+        <h1 id="contact-page-h" class="display">Write to us.</h1>
+        <p class="lede">We are a small research team. Use the form, or the address at the foot of the page.</p>
+
+        <div class="form-wrap">
+          <!-- Sent state. Without script it is shown by the #sent fragment that FormSubmit redirects to;
+               with script, js/contact-form.js shows it after a successful send. -->
+          <div class="sent" id="sent" role="status" tabindex="-1">
+            <p class="status"><i aria-hidden="true"></i>Message sent</p>
+            <p class="lede">Thank you. Your message is on its way to us.</p>
+          </div>
+
+          <!-- FormSubmit (formsubmit.co). The first submission sends an activation email to the inbox below;
+               nothing is delivered until its link is clicked. After activation the address in `action`
+               can be replaced by the alias FormSubmit sends. Change the address here and in the strip below. -->
+          <form class="form" id="contact-form" action="https://formsubmit.co/dpxlabs@diphyx.com" method="POST">
+            <!-- `_next` must be an absolute URL. js/contact-form.js rewrites it to the page's own address;
+                 the value below is used only when scripts are off. TODO: set it to the site's real domain. -->
+            <input type="hidden" name="_next" value="https://dpx.diphyx.com/contact.html#sent">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <div class="hp" hidden aria-hidden="true">
+              <label for="f-honey">Leave this field empty</label>
+              <input type="text" id="f-honey" name="_honey" tabindex="-1" autocomplete="off">
+            </div>
+
+            <div class="form-head">
+              <p class="minor" id="reason-label">Reason for writing</p>
+              <p class="minor">All fields are required</p>
+            </div>
+            <!-- The chosen reason is sent as the email subject. -->
+            <div class="choices" id="f-reason" role="radiogroup" aria-labelledby="reason-label" aria-required="true" aria-describedby="err-reason">
+              <label class="choice">
+                <input type="radio" name="_subject" value="Research collaboration" required>
+                <span class="choice-name">Research collaboration</span>
+                <span class="choice-desc">Groups working on turbulence, reacting flows, neural operators or uncertainty quantification. Tell us the problem you are working on.</span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="_subject" value="Introduction">
+                <span class="choice-name">Joining us</span>
+                <span class="choice-desc">Researchers and engineers in scientific machine learning and computational physics. We have no open roles at present. Introductions are welcome.</span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="_subject" value="Investor enquiry">
+                <span class="choice-name">Investors</span>
+                <span class="choice-desc">People who fund long-horizon research.</span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="_subject" value="Press or speaking request">
+                <span class="choice-name">Press and speaking</span>
+                <span class="choice-desc">Interviews, talks and panels.</span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="_subject" value="General enquiry">
+                <span class="choice-name">Something else</span>
+              </label>
+            </div>
+            <p class="field-error" id="err-reason"></p>
+
+            <div class="field-row">
+              <div class="field">
+                <label class="minor" for="f-name">Name</label>
+                <input type="text" id="f-name" name="name" autocomplete="name" required aria-describedby="err-name">
+                <p class="field-error" id="err-name"></p>
+              </div>
+              <div class="field">
+                <label class="minor" for="f-email">Email</label>
+                <input type="email" id="f-email" name="email" autocomplete="email" inputmode="email" spellcheck="false" required aria-describedby="err-email">
+                <p class="field-error" id="err-email"></p>
+              </div>
+            </div>
+
+            <div class="field field--message">
+              <label class="minor" for="f-message">Message</label>
+              <p class="field-hint" id="hint-message">Who you are, the problem, and what you would like from us. Please leave confidential data out of a first message.</p>
+              <textarea id="f-message" name="message" rows="6" required aria-describedby="hint-message err-message"></textarea>
+              <p class="field-error" id="err-message"></p>
+            </div>
+
+            <p class="form-status" id="form-status" role="status"></p>
+
+            <div class="send-row">
+              <button class="send" type="submit">
+                <span>Send message</span>
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+              </button>
+              <p class="form-privacy">This form is delivered by FormSubmit, a third-party service. Your message passes through their servers on the way to us.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="spread spread--contact" id="contact" aria-labelledby="contact-h">
+      <div class="col">
+        <h2 id="contact-h" class="display">Or write directly.</h2>
+        <a class="mail" href="mailto:dpxlabs@diphyx.com">
+          <span>dpxlabs@diphyx.com</span>
+          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <canvas class="band" data-field="calm" data-font="11" aria-hidden="true"></canvas>
+  </main>
+
+  <footer class="site-footer">© 2026 DPX Labs</footer>
+
+  <script src="js/core.js"></script>
+  <script src="js/ascii-renderer.js"></script>
+  <script src="js/micro-field.js"></script>
+  <script src="js/site.js"></script>
+  <script src="js/contact-form.js"></script>
+  <script>
+    (function () {
+      var family = '"JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace';
+      var boot = function () { DPX.initMicroFields({ fontFamily: family }); };
+      var fontReady = document.fonts && document.fonts.load ? document.fonts.load('12px "JetBrains Mono"') : Promise.resolve();
+      Promise.race([fontReady, new Promise(function (r) { setTimeout(r, 1200); })]).then(boot, boot);
+    })();
+  </script>
+</body>
+</html>
