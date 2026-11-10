@@ -186,7 +186,16 @@ Four items in a two-column grid, each opened by a 1px ink rule, then a live micr
 Full-width rows of item-scale text, opened by an ink rule and separated by hairlines. Plain text, no links, no icons.
 
 ### Papers List and Empty State
-While nothing is published, a hairline-topped paragraph in graphite muted says so plainly. The entry template (date, title link, kind; mono 11px metadata either side of a 20px title) is kept as an HTML comment until a real paper exists.
+Rows of date, title, kind: mono 11px metadata either side of the title, ink rule on top, hairlines between. With nothing published, a hairline-topped paragraph in graphite muted says so plainly. On the Research page, `pub-list--lead` holds DPX Labs' own work at item scale (27px); `pub-list--prior` holds the founders' prior work at 18px, with an author/venue line in soft ink under each title, the year set once per group and a short kind tag (JOURNAL, PROCEEDINGS, WORKSHOP, THESIS). Linked titles carry the stroked arrow at rest.
+
+### Research page components
+- **Intro spread** (`spread--intro`): display-scale h1, rail with label and status but no index; numbering starts at 01 below it.
+- **Page index** (`page-index`): a sticky row under the header, the scene-tab pattern; the active item's 1px bar fills with reading progress through its spread. Scrolls sideways on narrow screens.
+- **Field figure** (`field-figure`): a wide micro-field on the subgrid with real-text zone labels in columns 1–3 and a "FIG. n" caption (11px mono label, 15px soft-ink text) under a hairline. Zone heights: `--odt-field-h`, `--odt-strip-h`.
+- **`odt` field**: dim ink turbulence with one line of sight in `thermal`, unrolled below as its temperature profile; triplet-map events fold it. Thermal appears only on the line and profile.
+- **Architecture** (`arch` + `conduit` field): stage labels are HTML on a 5-column grid with no boxes; a thin ASCII canvas behind them carries ink packets, about one in five returning through the reference solver in `cold`. Stacks vertically at ≤640px.
+- **More link** (`more-link`): 11px mono caps with the 1.5px stroked arrow and the mail link's wipe underline; the small secondary link. The mail link stays the only large call to action.
+- **Spacing token** `--block`: clamp(48px, 7vh, 80px), the gap between groups within a spread.
 
 ### Mail Link (signature)
 The contact address at clamp(26px, 3.4vw, 46px), weight 300, with a 1px ink underline and a stroked SVG arrow. On hover the underline wipes away to the right and the arrow lifts toward its corner (0.6s, same ease). It is the page's only call to action.
@@ -211,4 +220,4 @@ Small ASCII canvases that share the hero's renderer, glyph buckets and ramps. On
 - **Don't** use blue or amber outside a character field.
 - **Don't** add pulses, looping indicators or text reveal animations; the status square is static.
 - **Don't** set functional text below 11px.
-- **Don't** list papers, models, partners or metrics that do not exist; use the empty state.
+- **Don't** list papers, models, partners or metrics that do not exist; use the empty state. Founders' prior work may be listed, kept separate from DPX Labs' own.
